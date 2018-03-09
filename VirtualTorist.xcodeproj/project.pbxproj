@@ -20,6 +20,7 @@
 		43B0298120426A670070133A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B0298020426A670070133A /* ImageLoader.swift */; };
 		43B0298320426ADB0070133A /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B0298220426ADB0070133A /* StringExtension.swift */; };
 		43B02987204396E80070133A /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43B02985204396E80070133A /* VirtualTourist.xcdatamodeld */; };
+		43B0298920533C280070133A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B0298820533C280070133A /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		43B0298020426A670070133A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		43B0298220426ADB0070133A /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		43B02986204396E80070133A /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
+		43B0298820533C280070133A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				43B02963202E30F10070133A /* AppDelegate.swift */,
+				43B0298820533C280070133A /* DataController.swift */,
 				43B02965202E30F10070133A /* TravelLocationsViewController.swift */,
 				43B02975202E36490070133A /* PhotoAlbumViewController.swift */,
 				43B0297B2042354E0070133A /* Flickr */,
@@ -181,6 +184,7 @@
 				43B0297F204253BC0070133A /* FlickrDataModel.swift in Sources */,
 				43B02966202E30F10070133A /* TravelLocationsViewController.swift in Sources */,
 				43B02964202E30F10070133A /* AppDelegate.swift in Sources */,
+				43B0298920533C280070133A /* DataController.swift in Sources */,
 				43B0298320426ADB0070133A /* StringExtension.swift in Sources */,
 				43B02987204396E80070133A /* VirtualTourist.xcdatamodeld in Sources */,
 				43B0297D20423B6D0070133A /* FlickrConstants.swift in Sources */,
