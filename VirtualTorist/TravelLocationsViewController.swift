@@ -16,6 +16,10 @@ class TravelLocationsViewController: UIViewController {
     @IBOutlet weak var travelMapView: MKMapView!
     var coordinate2D: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     
+    var dataController:DataController!
+    
+//    var fetchedResultsController:NSFetchedResultsController<Notebook>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,7 +43,6 @@ class TravelLocationsViewController: UIViewController {
     @objc func longPressed(gestureRecognized: UIGestureRecognizer){
         let touchpoint = gestureRecognized.location(in: self.travelMapView)
         let location = travelMapView.convert(touchpoint, toCoordinateFrom: self.travelMapView)
-        
         let annotation = MKPointAnnotation()
         annotation.title = "Latitude: \(location.latitude)"
         annotation.subtitle = "Longitude: \(location.longitude)"
@@ -49,10 +52,22 @@ class TravelLocationsViewController: UIViewController {
         
     }
     
+    func addPin(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        let pin = PinEntity(context: dataController.viewContext)
+        pin.latitude = Double(latitude)
+        pin.longitude = Double(longitude)
+        do {
+            try dataController.viewContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "photoAlbumViewController" {
             if let vc = segue.destination as? PhotoAlbumViewController {
                 vc.coordinate2D = coordinate2D
+                vc.dataController = dataController
             }
         }
     }

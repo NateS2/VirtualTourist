@@ -17,6 +17,9 @@ class PhotoAlbumViewController: UIViewController, MKMapViewDelegate {
     var fetchedImages: [Photo] = [Photo]()
     
     private let flickrClient: FlickrClient = FlickrClient.shared
+    
+    var dataController: DataController!
+    var pin: PinEntity!
 
     override func viewDidLoad() {
         super.viewDidLoad()
