@@ -10,6 +10,7 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class TravelLocationsViewController: UIViewController {
     
@@ -17,6 +18,8 @@ class TravelLocationsViewController: UIViewController {
     var coordinate2D: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0)
     
     var dataController:DataController!
+    
+    var pins: [PinEntity]!
     
 //    var fetchedResultsController:NSFetchedResultsController<Notebook>!
     
@@ -28,11 +31,13 @@ class TravelLocationsViewController: UIViewController {
         //long press (2 sec duration)
         longPress.minimumPressDuration = 2
         travelMapView.addGestureRecognizer(longPress)
+        setUpPins()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -40,22 +45,25 @@ class TravelLocationsViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-    @objc func longPressed(gestureRecognized: UIGestureRecognizer){
-        let touchpoint = gestureRecognized.location(in: self.travelMapView)
-        let location = travelMapView.convert(touchpoint, toCoordinateFrom: self.travelMapView)
+    fileprivate func addPin(_ location: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
         annotation.title = "Latitude: \(location.latitude)"
         annotation.subtitle = "Longitude: \(location.longitude)"
         annotation.coordinate = location
         travelMapView.addAnnotation(annotation)
-        
-        
     }
     
-    func addPin(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+    @objc func longPressed(gestureRecognized: UIGestureRecognizer){
+        let touchpoint = gestureRecognized.location(in: self.travelMapView)
+        let location = travelMapView.convert(touchpoint, toCoordinateFrom: self.travelMapView)
+        addPin(location)
+        savePin(location)
+    }
+    
+    func savePin(_ location: CLLocationCoordinate2D) {
         let pin = PinEntity(context: dataController.viewContext)
-        pin.latitude = Double(latitude)
-        pin.longitude = Double(longitude)
+        pin.latitude = Double(location.latitude)
+        pin.longitude = Double(location.longitude)
         do {
             try dataController.viewContext.save()
         } catch let error as NSError {
@@ -63,11 +71,42 @@ class TravelLocationsViewController: UIViewController {
         }
     }
     
+    fileprivate func fetchPins() {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "PinEntity")
+        
+        //3
+        do {
+            pins = try dataController.viewContext.fetch(fetchRequest) as! [PinEntity]
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func setUpPins() {
+        fetchPins()
+        for pin in pins {
+            let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(pin.latitude), longitude: CLLocationDegrees(pin.longitude))
+            addPin(coordinate)
+        }
+    }
+    
+    func lookUpPin(_ location: CLLocationCoordinate2D) -> PinEntity? {
+        for pin in pins {
+            if (pin.latitude == location.latitude && pin.longitude == location.longitude) {
+                return pin
+            }
+        }
+        return nil
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "photoAlbumViewController" {
+            guard let safePin = lookUpPin(coordinate2D) else { print("safePin nil"); return }
             if let vc = segue.destination as? PhotoAlbumViewController {
                 vc.coordinate2D = coordinate2D
                 vc.dataController = dataController
+                vc.pin = safePin
+                print(safePin)
             }
         }
     }
