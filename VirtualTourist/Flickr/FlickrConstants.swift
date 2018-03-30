@@ -11,8 +11,8 @@ import Foundation
 extension FlickrClient {
     
     struct constants {
-        static let flickrAPIKey = ""
-        static let flickerSecret = ""
+        static let flickrAPIKey = "28055c217148956c53582fade7d5b4e0"
+        static let flickerSecret = "0ae44d9f69dd5207"
     }
     
     // MARK: Flickr

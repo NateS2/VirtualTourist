@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4396C44A206DD07400CC7DA0 /* PhotoAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4396C449206DD07400CC7DA0 /* PhotoAlbumCollectionViewCell.swift */; };
 		43B02964202E30F10070133A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02963202E30F10070133A /* AppDelegate.swift */; };
 		43B02966202E30F10070133A /* TravelLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B02965202E30F10070133A /* TravelLocationsViewController.swift */; };
 		43B02969202E30F10070133A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B02967202E30F10070133A /* Main.storyboard */; };
@@ -24,7 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		43B02960202E30F10070133A /* VirtualTorist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTorist.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4396C449206DD07400CC7DA0 /* PhotoAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
+		43B02960202E30F10070133A /* VirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B02963202E30F10070133A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43B02965202E30F10070133A /* TravelLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelLocationsViewController.swift; sourceTree = "<group>"; };
 		43B02968202E30F10070133A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 		43B02957202E30F10070133A = {
 			isa = PBXGroup;
 			children = (
-				43B02962202E30F10070133A /* VirtualTorist */,
+				43B02962202E30F10070133A /* VirtualTourist */,
 				43B02961202E30F10070133A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,18 +66,19 @@
 		43B02961202E30F10070133A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				43B02960202E30F10070133A /* VirtualTorist.app */,
+				43B02960202E30F10070133A /* VirtualTourist.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		43B02962202E30F10070133A /* VirtualTorist */ = {
+		43B02962202E30F10070133A /* VirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
 				43B02963202E30F10070133A /* AppDelegate.swift */,
 				43B0298820533C280070133A /* DataController.swift */,
 				43B02965202E30F10070133A /* TravelLocationsViewController.swift */,
 				43B02975202E36490070133A /* PhotoAlbumViewController.swift */,
+				4396C449206DD07400CC7DA0 /* PhotoAlbumCollectionViewCell.swift */,
 				43B0297B2042354E0070133A /* Flickr */,
 				43B02967202E30F10070133A /* Main.storyboard */,
 				43B0297720422B100070133A /* GCDBlackBox.swift */,
@@ -86,7 +89,7 @@
 				43B0296C202E30F10070133A /* LaunchScreen.storyboard */,
 				43B0296F202E30F10070133A /* Info.plist */,
 			);
-			path = VirtualTorist;
+			path = VirtualTourist;
 			sourceTree = "<group>";
 		};
 		43B0297B2042354E0070133A /* Flickr */ = {
@@ -110,9 +113,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		43B0295F202E30F10070133A /* VirtualTorist */ = {
+		43B0295F202E30F10070133A /* VirtualTourist */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43B02972202E30F10070133A /* Build configuration list for PBXNativeTarget "VirtualTorist" */;
+			buildConfigurationList = 43B02972202E30F10070133A /* Build configuration list for PBXNativeTarget "VirtualTourist" */;
 			buildPhases = (
 				43B0295C202E30F10070133A /* Sources */,
 				43B0295D202E30F10070133A /* Frameworks */,
@@ -122,9 +125,9 @@
 			);
 			dependencies = (
 			);
-			name = VirtualTorist;
+			name = VirtualTourist;
 			productName = VirtualTorist;
-			productReference = 43B02960202E30F10070133A /* VirtualTorist.app */;
+			productReference = 43B02960202E30F10070133A /* VirtualTourist.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -143,7 +146,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 43B0295B202E30F10070133A /* Build configuration list for PBXProject "VirtualTorist" */;
+			buildConfigurationList = 43B0295B202E30F10070133A /* Build configuration list for PBXProject "VirtualTourist" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -156,7 +159,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				43B0295F202E30F10070133A /* VirtualTorist */,
+				43B0295F202E30F10070133A /* VirtualTourist */,
 			);
 		};
 /* End PBXProject section */
@@ -190,6 +193,7 @@
 				43B0297D20423B6D0070133A /* FlickrConstants.swift in Sources */,
 				43B0298120426A670070133A /* ImageLoader.swift in Sources */,
 				43B02976202E36490070133A /* PhotoAlbumViewController.swift in Sources */,
+				4396C44A206DD07400CC7DA0 /* PhotoAlbumCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,9 +331,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7HS3932M4X;
 				INFOPLIST_FILE = VirtualTorist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathan.VirtualTorist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nathan.VirtualTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -341,9 +346,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7HS3932M4X;
 				INFOPLIST_FILE = VirtualTorist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathan.VirtualTorist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nathan.VirtualTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -353,7 +359,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		43B0295B202E30F10070133A /* Build configuration list for PBXProject "VirtualTorist" */ = {
+		43B0295B202E30F10070133A /* Build configuration list for PBXProject "VirtualTourist" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43B02970202E30F10070133A /* Debug */,
@@ -362,7 +368,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		43B02972202E30F10070133A /* Build configuration list for PBXNativeTarget "VirtualTorist" */ = {
+		43B02972202E30F10070133A /* Build configuration list for PBXNativeTarget "VirtualTourist" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43B02973202E30F10070133A /* Debug */,
