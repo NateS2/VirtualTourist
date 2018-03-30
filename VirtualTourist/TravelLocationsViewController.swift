@@ -54,16 +54,19 @@ class TravelLocationsViewController: UIViewController {
     }
     
     @objc func longPressed(gestureRecognized: UIGestureRecognizer){
-        let touchpoint = gestureRecognized.location(in: self.travelMapView)
-        let location = travelMapView.convert(touchpoint, toCoordinateFrom: self.travelMapView)
-        addPin(location)
-        savePin(location)
+        if gestureRecognized.state == .ended {
+            let touchpoint = gestureRecognized.location(in: self.travelMapView)
+            let location = travelMapView.convert(touchpoint, toCoordinateFrom: self.travelMapView)
+            addPin(location)
+            savePin(location)
+        }
     }
     
     func savePin(_ location: CLLocationCoordinate2D) {
         let pin = PinEntity(context: dataController.viewContext)
         pin.latitude = Double(location.latitude)
         pin.longitude = Double(location.longitude)
+        pins.append(pin)
         do {
             try dataController.viewContext.save()
         } catch let error as NSError {

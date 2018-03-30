@@ -40,19 +40,43 @@ class PhotoAlbumViewController: UIViewController, MKMapViewDelegate {
         annotation.subtitle = "Longitude: \(safeCoordinate.longitude)"
         annotation.coordinate = safeCoordinate
         photoMapView.addAnnotation(annotation)
-        populateData()
+        setUpPhotos()
 
+    }
+    
+    fileprivate func fetchPhotos() {
+        let fetchRequest = NSFetchRequest<PhotoEntity>(entityName: "PhotoEntity")
+        fetchRequest.predicate = NSPredicate(format: "pin == %@", pin)
+        //3
+        do {
+            coreDataPhotos = try dataController.viewContext.fetch(fetchRequest) as! [PhotoEntity]
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func setUpPhotos() {
+        fetchPhotos()
+        if coreDataPhotos.count == 0 {
+            populateData()
+        }
     }
     
     func populateData() {
         flickrClient.getPhotoList(coordinate: coordinate2D, completion: { (imageResult) in
             self.fetchedImages = imageResult
             self.addPhotoEntities()
-            performUIUpdatesOnMain {
-                self.photoCollectionView.reloadData()
-            }
+            
         }) {
             
+        }
+    }
+    
+    fileprivate func savePhoto() {
+        do {
+            try dataController.viewContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
         }
     }
     
@@ -60,6 +84,12 @@ class PhotoAlbumViewController: UIViewController, MKMapViewDelegate {
         for image in fetchedImages {
             let photo = PhotoEntity(context: dataController.viewContext)
             photo.url = image.url_m
+            photo.pin = pin
+            coreDataPhotos.append(photo)
+            savePhoto()
+        }
+        performUIUpdatesOnMain {
+            self.photoCollectionView.reloadData()
         }
     }
 

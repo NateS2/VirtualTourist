@@ -26,6 +26,14 @@ class PhotoAlbumCollectionViewCell: UICollectionViewCell {
                 }
             })
         }
+        
+//        ImageLoader().loadImage(forURLString: photo.url!, completion: { (data) in
+//            photo.photoData = data
+//            print("called")
+//            performUIUpdatesOnMain {
+//                self.cellImageView.image = UIImage(data: photo.photoData!)
+//            }
+//        })
     }
     
     func saveImage(_photo: PhotoEntity,_ dataController: DataController) {
