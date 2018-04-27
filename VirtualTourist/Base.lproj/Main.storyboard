@@ -118,11 +118,25 @@
                                     <outlet property="delegate" destination="WnW-lB-kXG" id="kBI-in-aV7"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rcr-Ro-9Yo">
+                                <rect key="frame" x="0.0" y="613" width="375" height="54"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="fnD-YY-oKf"/>
+                                </constraints>
+                                <state key="normal" title="New Collection"/>
+                                <connections>
+                                    <action selector="newCollectionPressed:" destination="WnW-lB-kXG" eventType="touchUpInside" id="gGV-aJ-dW1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dmc-yR-X3u" firstAttribute="leading" secondItem="aHd-ma-9LD" secondAttribute="leading" id="83T-er-dZm"/>
                             <constraint firstItem="Wko-7g-ARm" firstAttribute="top" secondItem="dmc-yR-X3u" secondAttribute="bottom" constant="8" id="A31-9f-KEw"/>
+                            <constraint firstItem="Rcr-Ro-9Yo" firstAttribute="bottom" secondItem="aHd-ma-9LD" secondAttribute="bottom" id="DaV-WI-bSd"/>
+                            <constraint firstItem="Rcr-Ro-9Yo" firstAttribute="leading" secondItem="aHd-ma-9LD" secondAttribute="leading" id="DiK-cA-iDX"/>
+                            <constraint firstItem="Rcr-Ro-9Yo" firstAttribute="trailing" secondItem="aHd-ma-9LD" secondAttribute="trailing" id="PRa-eO-oOZ"/>
                             <constraint firstItem="dmc-yR-X3u" firstAttribute="top" secondItem="qWC-1R-c3K" secondAttribute="top" id="eXB-ov-qGB"/>
                             <constraint firstItem="Wko-7g-ARm" firstAttribute="leading" secondItem="aHd-ma-9LD" secondAttribute="leading" id="hEH-5A-w1a"/>
                             <constraint firstAttribute="bottom" secondItem="Wko-7g-ARm" secondAttribute="bottom" id="pUh-OA-ylf"/>
@@ -134,6 +148,7 @@
                     <navigationItem key="navigationItem" id="aIg-qt-NEd"/>
                     <connections>
                         <outlet property="flowLayout" destination="0YZ-ci-z4n" id="rHD-ww-q4P"/>
+                        <outlet property="newCollectionButton" destination="Rcr-Ro-9Yo" id="IMD-gb-1Af"/>
                         <outlet property="photoCollectionView" destination="Wko-7g-ARm" id="nt5-t8-NA1"/>
                         <outlet property="photoMapView" destination="dmc-yR-X3u" id="dB4-8u-NUG"/>
                     </connections>

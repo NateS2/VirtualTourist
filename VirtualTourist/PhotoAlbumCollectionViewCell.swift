@@ -11,10 +11,10 @@ import UIKit
 class PhotoAlbumCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cellImageView: UIImageView!
-    
+    var photoEntity: PhotoEntity!
     
     func setUpCell(_ photo: PhotoEntity,_ dataController: DataController) {
-        
+        photoEntity = photo
         if photo.photoData != nil {
             cellImageView.image = UIImage(data: photo.photoData!)
         } else {
@@ -27,13 +27,6 @@ class PhotoAlbumCollectionViewCell: UICollectionViewCell {
             })
         }
         
-//        ImageLoader().loadImage(forURLString: photo.url!, completion: { (data) in
-//            photo.photoData = data
-//            print("called")
-//            performUIUpdatesOnMain {
-//                self.cellImageView.image = UIImage(data: photo.photoData!)
-//            }
-//        })
     }
     
     func saveImage(_photo: PhotoEntity,_ dataController: DataController) {

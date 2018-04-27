@@ -24,9 +24,19 @@ class PhotoAlbumViewController: UIViewController, MKMapViewDelegate {
     var pin: PinEntity!
     var fetchedResultsController:NSFetchedResultsController<PhotoEntity>!
 
+    @IBOutlet weak var newCollectionButton: UIButton!
+    @IBAction func newCollectionPressed(_ sender: Any) {
+        deleteAllPhotos {
+            performUIUpdatesOnMain {
+                self.setUpPhotos()
+            }
+        }
+       
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        photoCollectionView.allowsMultipleSelection = true
         // Do any additional setup after loading the view.
     }
     
@@ -53,6 +63,18 @@ class PhotoAlbumViewController: UIViewController, MKMapViewDelegate {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+    }
+    
+    func deleteAllPhotos(completion:@escaping () ->()) {
+        for entity in coreDataPhotos {
+            dataController.viewContext.delete(entity)
+            do {
+                try dataController.viewContext.save()
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        }
+        completion()
     }
     
     func setUpPhotos() {
@@ -102,9 +124,6 @@ class PhotoAlbumViewController: UIViewController, MKMapViewDelegate {
         return annotationView
     }
 }
-extension PhotoAlbumViewController: UICollectionViewDelegate {
-    
-}
 
 extension PhotoAlbumViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -117,6 +136,22 @@ extension PhotoAlbumViewController: UICollectionViewDataSource {
         cell.setUpCell(coreDataPhotos[indexPath.row], dataController)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! PhotoAlbumCollectionViewCell
+        
+        let photoToDelete = cell.photoEntity
+        dataController.viewContext.delete(photoToDelete!)
+        do {
+            try dataController.viewContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        coreDataPhotos.remove(at: indexPath.row)
+        photoCollectionView.deleteItems(at: [indexPath])
+        
     }
     
     
