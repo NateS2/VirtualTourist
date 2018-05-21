@@ -18,6 +18,9 @@ class PhotoAlbumCollectionViewCell: UICollectionViewCell {
         if photo.photoData != nil {
             cellImageView.image = UIImage(data: photo.photoData!)
         } else {
+            performUIUpdatesOnMain {
+                self.cellImageView.image = UIImage(named: "image_placeholder")
+            }
             ImageLoader().loadImage(forURLString: photo.url!, completion: { (data) in
                 photo.photoData = data
                 self.saveImage(_photo: photo, dataController)

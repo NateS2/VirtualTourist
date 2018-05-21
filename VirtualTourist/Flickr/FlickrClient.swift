@@ -33,7 +33,6 @@ class FlickrClient: NSObject {
         ] as [String : AnyObject]
         
         let request = URLRequest(url: flickrURLFromParameters(methodParameters))
-//        print("URL: \(flickrURLFromParameters(methodParameters))")
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil { // Handle error...
@@ -43,8 +42,6 @@ class FlickrClient: NSObject {
             }
             do {
                 let photoResponse = try JSONDecoder().decode(FlickrImageResult.self, from: data!)
-//                print("ITS HERE \(photoResponse.photos)")
-//                self.sharedData.studentLocations = studentLocationStruct.results
                 completion((photoResponse.photos?.photo)!)
                 
             } catch {

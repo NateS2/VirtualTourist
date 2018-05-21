@@ -21,15 +21,13 @@ class TravelLocationsViewController: UIViewController {
     
     var pins: [PinEntity]!
     
-//    var fetchedResultsController:NSFetchedResultsController<Notebook>!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(gestureRecognized:)))
         
-        //long press (2 sec duration)
-        longPress.minimumPressDuration = 2
+        //long press (.5 sec duration)
+        longPress.minimumPressDuration = 0.5
         travelMapView.addGestureRecognizer(longPress)
         setUpPins()
     }
@@ -54,7 +52,7 @@ class TravelLocationsViewController: UIViewController {
     }
     
     @objc func longPressed(gestureRecognized: UIGestureRecognizer){
-        if gestureRecognized.state == .ended {
+        if gestureRecognized.state == .began {
             let touchpoint = gestureRecognized.location(in: self.travelMapView)
             let location = travelMapView.convert(touchpoint, toCoordinateFrom: self.travelMapView)
             addPin(location)
